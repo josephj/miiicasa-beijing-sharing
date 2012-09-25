@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+em {
+    font-style: normal;
+    color: red;
+}
+
+</style>
+<title>Literate Programming 文學編程</title>
+</head>
+<body>
+<h1>Literate Programming 文學編程</h1>
+
+<p>軟體開發實際上只有 <em>10% 的時間在撰寫程式碼、其餘 90% 的時間都是在閱讀</em> 。</p>
+
+<p>為了程式的<em>可讀性(維護性)</em> ，我們用了模組化、程式碼規範、程式碼檢查、EDD、UML，但仍散落各地。</p>
+
+<p>文學編程的目的就是產出高質量的程式碼，藉由<em>寫文件的過程同時產出程式碼</em> 。</p>
+
+<p>讓你的思路無所遁形、容易為別人所理解。</p>
+
+<h2>文學編程的中心思想</h2>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/KnuthAtOpenContentAlliance.jpg/192px-KnuthAtOpenContentAlliance.jpg" alt="Donald Knuth" /></p>
+
+<p>1992 年由 <a href="http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3">高德納</a> ( Donald Knuth 電腦程式設計藝術的作者 ) 所提出：</p>
+
+<pre><code>    Donald Knuth. "Literate Programming (1984)" in Literate Programming. CSLI, 1992, pg. 99.
+
+    I believe that the time is ripe for significantly better documentation of programs, and that we can best achieve this by considering programs to be works of literature. Hence, my title: "Literate Programming."
+
+    Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.
+
+    The practitioner of literate programming can be regarded as an essayist, whose main concern is with exposition and excellence of style. Such an author, with thesaurus in hand, chooses the names of variables carefully and explains what each variable means. He or she strives for a program that is comprehensible because its concepts have been introduced in an order that is best for human understanding, using a mixture of formal and informal methods that reinforce each other.
+</code></pre>
+
+<ul>
+<li>「是時候了，讓程式的文件能夠更好。」</li>
+<li>「讓我們開始改變傳統建構程式的習慣吧！我們的主要任務不是去指示電腦做什麼、而是<em>專注於向人類解釋了解</em>我們想要電腦做什麼」</li>
+<li>將程式視為文學作品：
+
+<ul>
+<li>「文學編程的作者，會把自己當成是一個<em>散文家</em>，他們的主要顧慮在於<em>解釋與字句的優美</em>。」</li>
+<li>「<em>小心地選擇變數名稱並解釋它的意義</em>」</li>
+<li>「程式應該是要能夠<em>被理解</em>的」</li>
+</ul>
+</li>
+<li><p>文學編程是一種寫程式的理想形態：讓我們對於軟體的每個複雜環節都能充分地理解。</p>
+
+<pre><code>  A style of programming that maxmize our ability to perceive the structure of a complex piece of software.
+</code></pre></li>
+</ul>
+
+
+<h2>Daniel Mall 「推薦文學編程」</h2>
+
+<ul>
+<li>文學編程的主要特徵：
+
+<ul>
+<li>原始碼是<em>由許多小的章節</em>所構成。</li>
+<li>程式碼的質量與出版一本書相當。</li>
+</ul>
+</li>
+<li>對於軟體產品的內部架構文件化、是個非常傑出的方法，特別是應用於有複雜功能的應用程式。</li>
+<li>適用於各種大小的程式碼。</li>
+<li>包含有意義的文件與細節的描述，我們常會在產出的程式碼中省略的那些東西。
+
+<ul>
+<li>例如對演算法的描述、設計決策、實作策略&hellip;。</li>
+<li>要求 Software Engineer 去檢視並解釋他們的程式碼。</li>
+<li>創新的點子、重要的技術資訊、演算法的解法、怪異的程式寫法都會被詳盡記錄。</li>
+<li>ex. 同事小莊實作的 VideoParser ：對於<em>YouTube 格式的理解</em>及<em>最後實作的決策</em>為何？</li>
+</ul>
+</li>
+<li>目的在於被別人閱讀與理解。</li>
+</ul>
+
+
+<h2>實作工具</h2>
+
+<p>當時高德納開發使用 <em>C</em> (演算法實作)、撰寫文件則是用自己發明的排版工具 <em>TeX</em> (解釋結構)。</p>
+
+<p>文學編程不過就是將<em>解釋</em>與<em>實作</em>兩種不同的文件(思緒)放在一起、視情況產出你所需要的文件(程式碼)。</p>
+
+<p>當時高德納建置了以下的工具 (只能給 C 用)</p>
+
+<ul>
+<li>CWEB - Web 並不是指我們現在所講的網際網路。這邊的 web 是網子的意思，可以想像成是<em>人跳脫的思緒</em>。
+網子中有很多點、提供表象，讓程式能夠<em>以小章節的方式</em>理解<em>內容</em>與<em>中間的相互關係</em>。
+例如 C 中必定有複雜的演算法可以單獨抽離撰寫。</li>
+<li>CTANGLE - Tangle 的中文為糾纏，它的功能就是<em>將這些 Web 的表象轉化為 C 所需要的語言型態</em>。</li>
+<li>CWEAVE - 以既有的 Web 、將 C 與 TeX 互相糾結在一起。</li>
+</ul>
+
+
+<h3>目前的文學編程實作</h3>
+
+<ul>
+<li>Pascal 是 WEB。</li>
+<li>C++ 是 CWEB。</li>
+<li>Fortran 是 FWEB。</li>
+<li>沒有語言限制有：noweb, FunnelWeb, nuweb。</li>
+</ul>
+
+
+<p>PHP 也有 noweb 的實作： <a href="https://github.com/bergie/noweb.php">點此觀看</a></p>
+
+<h2>Leo 編輯器</h2>
+
+<p>以上的文學編程實作都不包含 IDE，僅止於用 Web 產出 Tangle 後的文件。
+而 Leo 編輯器則整合了 IDE、並藉由 Outliner 的作法，完美呈現文學編程的實作，是目前最完美的結合。</p>
+
+<p><img src="http://webpages.charter.net/edreamleo/slides/external-files/_static/Leo4-80-border.jpg" alt="Leo Logo" /></p>
+
+<ul>
+<li>人們說： Leo 是個革命性的工具、使用有趣、會上癮。</li>
+<li>用 Leo 的方式來管理資料（以 Leo 為主的世界：稱之為 Leonine）。</li>
+<li>的確會需要時間上手</li>
+<li>Aha - 了解 Leo 後會有的驚嘆之聲。</li>
+<li>Outline 的架構在任何地方都是非常有意義的。
+
+<ul>
+<li>對 outline 有完全的主導權：以你喜歡的方式組織</li>
+</ul>
+</li>
+<li>寫程式變得很容易，因為可以第一眼就知道這個程式是如何設計的。</li>
+</ul>
+
+
+<h3>在 Mac 上安裝 Leo 編輯器</h3>
+
+<p>Leo 完全由 Python 撰寫、藉由 PyQt 而有圖型化的編輯介面。</p>
+
+<ol>
+<li>brew install pyqt
+
+<ul>
+<li>會直接幫我安裝好 sip, pyqt，但 pyqt 下載時碰到問題。</li>
+<li>如果這個可以一次裝好，就可以直接跳到下載 Leo 的步驟啦！</li>
+</ul>
+</li>
+<li>Leo 相容於 Python 2 或 3 的版本。<a href="http://www.python.org/download/">下載頁面</a>
+
+<ul>
+<li>我是下載 Python 3.2 Mac Installer</li>
+<li>最後執行檔會安裝於 /usr/local/bin/python3.2</li>
+</ul>
+</li>
+<li><p>下載 sip <a href="http://www.riverbankcomputing.co.uk/software/sip/download">下載頁面</a></p>
+
+<pre><code> python3.2 configure.py
+ make
+ sudo make install
+</code></pre></li>
+<li><p>下載 PyQt4 <a href="http://www.riverbankcomputing.co.uk/software/pyqt/download">下載頁面</a></p>
+
+<pre><code> python3.2 configure.py
+ make
+ sudo make install
+</code></pre>
+
+<ul>
+<li>PyQt 還蠻大的，會花些時間！</li>
+</ul>
+</li>
+<li><p>下載 Leo 4.1 <a href="http://sourceforge.net/projects/leo/files/Leo/4.10%20final/">下載頁面</a></p>
+
+<pre><code> python3.2 launchLeo.py
+</code></pre></li>
+</ol>
+
+
+<p>這樣就可以讓 Leo 跑起來啦！</p>
+
+<h3>在 Windows 上安裝 Leo 編輯器</h3>
+
+<p>Windows 安裝更簡單，不需要編譯，把下列程式安裝起來：</p>
+
+<ul>
+<li>PyQt + Python + Leo</li>
+</ul>
+
+
+<p>接著 DOS 下執行（或建立一個捷徑）</p>
+
+<pre><code>C:\Python26\pythonw.exe "C:\Python26\Lib\site-packages\leo\launchLeo.py"
+</code></pre>
+
+<h2>如何實作</h2>
+
+<ul>
+<li>小莊的試用期評估報告 - 趣味版！</li>
+</ul>
+
+
+<p><img src="http://farm9.staticflickr.com/8035/8015883716_704b75d042_b.jpg" alt="截圖" />
+<img src="http://farm9.staticflickr.com/8309/8015896970_f0d8e2d4ca_b.jpg" alt="截圖" /></p>
+
+<h2>概念</h2>
+
+<ul>
+<li>左上角的 Outline 就是構成整份文章的結構，對於自己或其他人是相當容易一目了然的。</li>
+<li>我們可以利用 @file 去開啟新檔、或連結既有的檔案</li>
+<li>再利用 @others 或 section 的方式把其他章節引入，如此就可以構成一個完整的文章或程式碼。</li>
+<li>思路可以不按照順序，不需被中文的起承轉合、英文的開門見山、或各種程式語言的寫法所綁死。</li>
+<li>可以把各類的文件納入，把 Leo 想像是一個專案管理系統，程式碼的產出只是一小部分。</li>
+</ul>
+
+
+<p>我的感覺：光看程式有點類似模組化開發的概念，但並不需要去關心是否要重複利用。
+該如何讓自己與其他人理解你的實作邏輯才是最重要的。</p>
+
+<h2>結語</h2>
+
+<p>真的很難想像，我的所學（文學）跟我的工作（程式）能夠有一天被連繫起來。</p>
+
+<p>從寫程式開始的第一天，我就一直在思考「維護性」這個問題：</p>
+
+<p>怎麼樣看得舒服？怎麼樣一看就懂？怎麼樣好分工？變數怎麼命名？什麼才是最佳作法？</p>
+
+<p>或許正是因為我大學四年得寫很多 Essay，想辦法讓老師理解我對某個問題的看法有關。</p>
+
+<p>看似不相關的兩件事，透過了時間，產生了很有趣的激盪與巧合，也難怪那天 Zoom.Quiet 大媽一講這個議題我就開始有濃厚的興趣。</p>
+
+<p>不過文學編程已經有 20 年的歷史了，人還是要透過不斷地學習才能體會好的東西啊… 過去的我必定是不能體驗這樣的美好的…</p>
+</body>
+</html>

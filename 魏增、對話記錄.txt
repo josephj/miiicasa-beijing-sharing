@@ -1,0 +1,63 @@
+日期  時間  傳訊者  收訊者  訊息 
+2012/6/2  下午 08:45:34  潘魏增  Joseph Jiang  hi，定宇，对于你的ppt内容有个疑问，为什么你觉得combo的方式比build好，呵呵。  
+2012/6/2  下午 09:47:08  潘魏增  Joseph Jiang  我们使用yui3的实际经验是，Combo把合并模块的时间点推到用户访问时才开始，增加了部署复杂度（多一个服务），故障排查起来相对困难（需要分清楚是CDN、Combo、Cache还是浏览器的问题），未来还是倾向于发布前就Build好文件的。 
+2012/6/2  下午 09:47:16  潘魏增  Joseph Jiang  我们的combo服务是自己写的。 
+2012/6/4  上午 09:13:24  Joseph Jiang  潘魏增  你講的沒錯。我們先前也是使用 build 的方式，但是用了一陣子後，有蠻多問題的。 
+2012/6/4  上午 09:14:59  Joseph Jiang  潘魏增  在 build 時，目前時間花最久的就是 JavaScript 的合併與最小化。 
+2012/6/4  上午 09:15:52  Joseph Jiang  潘魏增  另外如果是 build，那應該得有一個設定檔（哪個頁面要有哪些 JS / CSS) 
+2012/6/4  上午 09:16:01  Joseph Jiang  潘魏增  這個設定檔到最後會很難維護 
+2012/6/4  上午 09:18:46  Joseph Jiang  潘魏增  再來、預先 Minify 也是個問題，有時問題出現在 Production、Debugging 很困難。當然不應該在線上做 debug，但是小公司，有時應該快速解決問題而不是再 Deploy 一次 
+2012/6/4  上午 09:20:08  Joseph Jiang  潘魏增  在開發流程上，我還是希望大家能夠專注於模塊的開發，YUI 的 Dependencies 對其他人真要搞懂也是很辛苦的 
+2012/6/4  上午 09:20:56  Joseph Jiang  潘魏增  以上就是整體的考量，不過如你所說當然也會有一些問題，這就要試試看才知道了 
+2012/6/6  上午 10:50:16  潘魏增  Joseph Jiang  YAHOO内部有一个build工具叫fuse，不知道你有没有使用过，呵呵。不过现在没有开源出来。 
+2012/6/6  上午 10:58:25  Joseph Jiang  潘魏增  現在就是用這個啊 :D 
+2012/6/6  上午 10:58:35  Joseph Jiang  潘魏增  然後碰到了我說的問題  
+2012/6/6  上午 10:58:57  潘魏增  Joseph Jiang  然后你就转投combo了？ 呵呵 
+2012/6/6  上午 10:59:40  Joseph Jiang  潘魏增  先暫時讓兩種都可以使用 
+2012/6/6  上午 10:59:44  Joseph Jiang  潘魏增  比較比較 
+2012/6/6  上午 10:59:47  潘魏增  Joseph Jiang  或者说fuse这种工具没有做好？ 
+2012/6/6  上午 10:59:49  Joseph Jiang  潘魏增  一定也會有問題的 
+2012/6/6  上午 11:00:19  Joseph Jiang  潘魏增  YUI 3.4.0 後 Module 切太細了了 
+2012/6/6  上午 11:00:22  Joseph Jiang  潘魏增  先去開會 
+2012/6/6  上午 11:00:31  潘魏增  Joseph Jiang  你有fuse的代码？我不太明白fuse是如何工作的。 
+2012/6/6  上午 11:00:34  潘魏增  Joseph Jiang  好的 你先忙 
+2012/6/6  上午 11:41:38  Joseph Jiang  潘魏增  其實就是我上次去北京演講的內容，有一個 mini 
+2012/6/6  上午 11:42:32  Joseph Jiang  潘魏增  就是fuse 
+2012/6/6  下午 12:30:26  潘魏增  Joseph Jiang  有链接没？呵呵 
+2012/6/6  下午 03:29:57  Joseph Jiang  潘魏增  http://www.slideshare.net/josephj/ss-7705095 第 52 頁 
+2012/6/6  下午 03:33:36  潘魏增  Joseph Jiang  感觉还是combo啊。。。 
+2012/6/6  下午 03:37:39  Joseph Jiang  潘魏增  combo 比較像是用 GET 把檔案串起來 
+2012/6/6  下午 03:37:53  Joseph Jiang  潘魏增  fuse 比較像是用設定檔把檔案串起來 
+2012/6/6  下午 03:38:11  Joseph Jiang  潘魏增  fuse 只會用在開發環境上 
+2012/6/6  下午 03:39:28  Joseph Jiang  潘魏增  我們目前也都是以 fuse 的模塊與頁面的設定去產生線上環境的檔案 
+2012/6/6  下午 03:40:58  潘魏增  Joseph Jiang  一样的，我们做了一些别名也可以用设定档的，我给你看看。 
+2012/6/6  下午 03:41:19  Joseph Jiang  潘魏增  好啊 
+2012/6/6  下午 03:41:57  潘魏增  Joseph Jiang  // 常用文件序列缩写 $options['abbr'] = array( // 核心库文件 'mt-yui-core-min.v1.js' => array( 'yui/3.3.0/build/yui/yui-min.js', 'yui/3.3.0/build/oop/oop-min.js', 'yui/3.3.0/build/io/io-min.js', 'yui/3.3.0/build/event-custom/event-custom-min.js', 'yui/3.3.0/build/event/event-min.js', 'yui/3.3.0/build/dom/dom-min.js', 'yui/3.3.0/build/node/node-min. 
+2012/6/6  下午 03:42:34  潘魏增  Joseph Jiang  // 3.5.1核心库文件 'mt-yui-core-debug.v3.5.1.js' => array ( 'yui/3.5.1/build/yui/yui-debug.js', 'yui/3.5.1/build/oop/oop-debug.js', 'yui/3.5.1/build/event-custom-base/event-custom-base-debug.js', 'yui/3.5.1/build/dom-core/dom-core-debug.js', 'yui/3.5.1/build/dom-base/dom-base-debug.js', 'yui/3.5.1/build/selector-native/selector-native-debug.js',  
+2012/6/6  下午 03:44:22  潘魏增  Joseph Jiang  config.php文件里面可以放很多别名，别名可以代表任意多个文件。 
+2012/6/6  下午 03:48:50  Joseph Jiang  潘魏增  感覺跟 FUSE 很像 
+2012/6/6  下午 03:50:49  潘魏增  Joseph Jiang  跟fuse可能不太像，1. 文件别名基本确定下来就不需要修改了，fuse会经常修改吧 2.我们没有做到发布前就合并文件，fuse可以做到 
+2012/6/6  下午 03:53:17  Joseph Jiang  潘魏增  所以這個設定檔在開發時用不到？在發佈時才會做合併嗎？ 
+2012/6/6  下午 03:53:39  潘魏增  Joseph Jiang  用啊  
+2012/6/6  下午 03:54:05  Joseph Jiang  潘魏增  是用一個個 <script src=""> 的方式？ 
+2012/6/6  下午 03:54:16  Joseph Jiang  潘魏增  因為你說發佈前不合併嗎 
+2012/6/6  下午 03:55:07  Joseph Jiang  潘魏增  另外你們應該也會有自己開發的 
+2012/6/6  下午 03:55:09  Joseph Jiang  潘魏增  js 
+2012/6/6  下午 03:55:42  Joseph Jiang  潘魏增  這些自己開發的檔案不用放入嗎？ 
+2012/6/6  下午 03:56:06  潘魏增  Joseph Jiang  可能没描述清楚，呵呵。 combo是这样的：有a, b, c三个模块，线上环境也是有这三个模块，然后通过combo?a&b&c合并成一个。我们目前是这样。 build是这样的：有a,b,c三个模块， 线上环境只有a_b_c一个模块，发布前就合并好了。 
+2012/6/6  下午 03:57:32  Joseph Jiang  潘魏增  fuse 跟你的 build 是一樣的概念，線上環境也只有 a_b_c 一個模塊 
+2012/6/6  下午 03:57:54  Joseph Jiang  潘魏增  不過你說不用修改的這個部分我還是有點好奇 
+2012/6/6  下午 03:58:25  Joseph Jiang  潘魏增  如果頁面上有新的功能，例如要放一個 datatable  
+2012/6/6  下午 03:58:47  Joseph Jiang  潘魏增  或者自己寫了一個 scroll pagination 
+2012/6/6  下午 03:58:53  Joseph Jiang  潘魏增  你會怎麼處理 
+2012/6/6  下午 03:59:12  Joseph Jiang  潘魏增  啊，我大概懂了 
+2012/6/6  下午 03:59:36  Joseph Jiang  潘魏增  其實你是一個檔案做完所有事，我是兩個檔案做，本質上並沒有不同 
+2012/6/6  下午 03:59:42  Joseph Jiang  潘魏增  我們的別名也是沒有換得 
+2012/6/6  下午 04:00:54  Joseph Jiang  潘魏增  例如登入後首頁 /index/welcome.php 會去載入 fuse 的 index_welcome 設定 
+2012/6/6  下午 04:05:03  潘魏增  Joseph Jiang  其实也是两个档案，刚才给的config.php其实是combo服务带的功能，它可以根据别名来获取别名所代表的一堆文件。  
+2012/6/6  下午 04:05:31  潘魏增  Joseph Jiang  <script type="text/javascript" src="http://c.meituan.net/combo/?mt-yui-core-min.v3.4.1.js&fecore/mt/js/base-min.v8c87b4a4.js" ></script> 这是我们页面上的种子文件  
+2012/6/6  下午 04:06:54  潘魏增  Joseph Jiang  <script> M.use('mt-base', function(Y) { Y.mt.util.addDomReadyListener(function() { M.TimeTracker['domReady'] = Y.Lang.now(); }); }); </script> 这是页面上的脚本引用  
+2012/6/6  下午 04:06:54  Joseph Jiang  潘魏增  嗯，這就有點像 Minify 的 Group 了 
+2012/6/6  下午 04:07:00  潘魏增  Joseph Jiang  对 
+2012/6/6  下午 04:11:52  潘魏增  Joseph Jiang  http://c.meituan.net/combo/?yui/3.4.1/build/plugin/plugin-min.js&fecore/plugin/node-placeholder/node-placeholder-min.vcdec0139.js&fecore/mt/js/uiutil-min.v35c9aabf.js&fecore/plugin/node-effect/node-effect-min.v270ef5ec.js&fecore/mt/js/formchecker-min.v38ffe4fd.js&fecore/mt/js/dialog-min.vcde0b66f.js&www/js/base-min.v0ba06ef6.js 这个是刚才那个脚本引用会请求的文件，是yui里面的loader发起的。 
+2012/6/6  下午 04:12:08  潘魏增  Joseph Jiang  这个就是传统意义的combo了 
