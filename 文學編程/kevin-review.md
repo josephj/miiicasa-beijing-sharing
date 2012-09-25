@@ -10,6 +10,7 @@
 
 ![意氣風發的小莊](http://sphotos-h.ak.fbcdn.net/hphotos-ak-ash4/s720x720/400527_435811263123716_312467004_n.jpg)
 
+好帥！
 ## 優點
 
 * 太帥了

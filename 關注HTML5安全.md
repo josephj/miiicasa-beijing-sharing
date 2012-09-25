@@ -149,8 +149,8 @@ Web 需要不斷地往前發展、雖然解決一些舊的風險，但也會帶�
 
 ## HTML5 對於安全性的改進
 
-* Iframe Sandbox* Content Security Policy - 內容安全策略         Content-Security-Policy: default-src https://jiang.yujie.net; frame-src 'none';      
-* XSS Filter* Todo - HTML5 安全規範
+* Iframe Sandbox* Content Security Policy - 內容安全策略（Header 只允許某些 URL, iframe 載入）         Content-Security-Policy: default-src https://jiang.yujie.net; frame-src 'none';      
+* XSS Filter - Chrome/Safari 已經直接內建* Todo - HTML5 安全規範
 
 ## HTML5 開創的藍海
 

@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+em {
+    font-style: normal;
+    color: red;
+}
+
+</style>
+<title>其他的技術分享</title>
+</head>
+<body>
+<h1>其他的技術分享</h1>
+
+<h2>美團的分享會</h2>
+
+<ul>
+<li>利用 Node.js 將所有 module 檔案的 require 快速找出來。</li>
+<li><a href="https://github.com/josephj/ycc">我的實作</a></li>
+</ul>
+
+
+<h2>JavaScript 现代化排错实践</h2>
+
+<ul>
+<li>講者：老趙</li>
+<li><a href="http://www.slideshare.net/jeffz/20120909-sdcc-javascript-modern-debugging">投影片</a></li>
+<li><a href="http://code.google.com/p/google-web-toolkit/wiki/SourceMaps">Source Map</a></li>
+<li>Firebug 有 bug</li>
+<li>Eclipse Debugging Tool</li>
+<li><p>在 eval 的程式碼加上</p>
+
+<pre><code>  //@sourceUrl=wind/anonymous.js
+</code></pre></li>
+<li><p>Debugging Obfuscated Code</p>
+
+<ul>
+<li>IE 10 能夠直接 Beautifier</li>
+</ul>
+</li>
+<li>Source Map
+
+<ul>
+<li>Google Closure 的支援</li>
+<li>Source Map V3 壓縮</li>
+<li>會有額外的 Reqeust (當打開 EnableSourceMap)</li>
+<li>還沒辦法做到 Callstack 的追蹤</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>SeaJS and Arale</h2>
+
+<ul>
+<li>講者：王保平（玉伯）</li>
+<li><a href="http://code.taobao.org/p/nginx_concat_module/src/trunk/">nginx concat module</a></li>
+<li>顆粒化的細度的問題</li>
+</ul>
+
+
+<h2>垂直社區的產品改造</h2>
+
+<ul>
+<li>丁香園：醫生所聚集的討論社群網站</li>
+<li><a href="http://www.slideshare.net/Fenng/ss-13274436">投影片</a></li>
+<li>分享討了一些議題：
+
+<ul>
+<li>為什麼不用 Open Source 的論壇</li>
+<li>為什麼不把程式碼全部翻掉</li>
+<li>慢慢地進步</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
